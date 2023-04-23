@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neighborCabinet.project.dao.IPlaceInfoDAO">
+
+    <select id="detailViewPlace" parameterType="int"
+            resultType="com.neighborCabinet.project.model.PlaceInfoVO">
+        select * from place where pNo=#{pNo}
+    </select>
+
+    <select id="showViewQA" parameterType="int"
+            resultType="com.neighborCabinet.project.model.QaVO">
+        select q.qaNo, q.qaContent, q.qaDate, q.userId, q.pNo, m.userNickName
+        from qa q, member m
+        where q.pNo=#{pNo} and q.userId=m.userId
+        order by q.qaNo
+    </select>
+    <select id="showViewReview" parameterType="int"
+            resultType="com.neighborCabinet.project.model.ReviewVO">
+        select r.reviewNo, r.reviewContent, r.reviewDate,r.reviewGrade, r.userId, r.reviewNo, m.userNickName
+        from review r, member m
+        where r.pNo=#{pNo} and r.userId=m.userId
+        order by r.reviewNo
+    </select>
+    <select id="insertQa" parameterType="com.neighborCabinet.project.model.QaVO">
+        insert into qa(qaContent,userId,pNo)
+        values (#{qaContent},#{userId},#{pNo})
+    </select>
+
+    <insert id="reserve" useGeneratedKeys="true" keyProperty="reserveNo" parameterType="com.neighborCabinet.project.model.ReserveVo">
+        insert into reserve(reserveNo,reserveDate,reservePrice,userId,pNo,boxType,startTime,endTime)
+        values (#{reserveNo}, #{reserveDate},#{reservePrice},#{userId},#{pNo},#{boxType},#{startTime},#{endTime})
+    </insert>
+
+    <select id="showDate" parameterType="HashMap" resultType="HashMap">
+        select
+        JSON_EXTRACT(r.date, #{reserveDate}) as hours,  p.pS_Time as st, p.pE_Time as et
+        FROM reserveDate r , place p
+        WHERE (JSON_EXTRACT(r.date, '$."boxtype"') = #{bt}) and r.pNo=#{pNo}  and r.pNo=p.pNo;
+
+    </select>
+
+    <select id="updateDate" parameterType="HashMap">
+        update reserveDate
+        set date=json_set(date,#{reserveDate},#{hours})
+        WHERE (JSON_EXTRACT(date, '$."boxtype"') = #{bt}) and pNo=#{pNo}
+    </select>
+
+    <select id="showBoxtype" parameterType="int" resultType="HashMap">
+        select boxId,boxPrice
+        from boxtype
+        where pNo= ${pNo}
+    </select>
+    <select id="imgCount" parameterType="int" resultType="int">
+        select count(*) from files where pid=#{pNo}
+    </select>
+    <delete id="qaDelete"  parameterType="int">
+        delete
+        from qa
+        where qaNo=${qaNo}
+    </delete>
+    <update id="qaUpdate" parameterType="HashMap">
+        update qa
+        set qaContent=#{qaContent} where qaNo=#{qaNo}
+    </update>
+</mapper>

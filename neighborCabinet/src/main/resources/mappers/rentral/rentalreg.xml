@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neighborCabinet.project.dao.IRentalregDAO">
+
+    <insert id="rentalreg" useGeneratedKeys="true" keyProperty="pNo" parameterType="com.neighborCabinet.project.model.PlaceInfoVO">
+        INSERT INTO
+        place (pNo, pWriteTitle, pWriteSub, pType, pType_d, food, pickup,pPlaceTitle, pPlaceInfo,pHp, pS_Time, pE_Time, pAddress1,pAddress2, pBoxInfo,pCautionInfo,userId)
+        VALUES (#{pNo},#{pWriteTitle},#{pWriteSub},#{pType},#{pType_d},#{food},#{pickup},#{pPlaceTitle},#{pPlaceInfo},#{pHp},#{pS_Time}, #{pE_Time}, #{pAddress1},#{pAddress2},#{pBoxInfo},#{pCautionInfo},#{userId})
+    </insert>
+
+<!--
+    <select id="boxreg" parameterType="String" resultType="com.neighborCabinet.project.model.BoxVO">
+        select BoxType, BoxQty, userId
+        from box
+        where userId=#{userId} and BoxQty > 0
+    </select>
+-->
+
+    <insert id ="boxPreg" parameterType="com.neighborCabinet.project.model.boxtypeVO">
+        call insert_boxtype(#{pNo},#{A_Qty},#{A_Price},#{B_Qty},#{B_Price},#{C_Qty},#{C_Price},#{D_Qty},#{D_Price},#{E_Qty},#{E_Price},#{F_Qty},#{F_Price})
+    </insert>
+
+    <insert id ="boxDate" parameterType="com.neighborCabinet.project.model.boxtypeVO">
+        call create_Date(#{pNo},#{A_Qty},#{B_Qty},#{C_Qty},#{D_Qty},#{E_Qty},#{F_Qty})
+    </insert>
+
+    <select id="placeList" parameterType="String" resultType="com.neighborCabinet.project.model.PlaceInfoVO">
+        select * from place where userId = #{sid}
+    </select>
+
+    <update id="placemodi" parameterType="com.neighborCabinet.project.model.PlaceInfoVO">
+        update place set pWriteTitle = #{pWriteTitle}, pWriteSub = #{pWriteSub}, pType = #{pType}, pType_d = #{pType_d}, food = #{food}, pickup = #{pickup}, pPlaceTitle = #{pPlaceTitle}, pPlaceInfo = #{pPlaceInfo}, pHp = #{pHp}, pS_Time = #{pS_Time}, pE_Time = #{pE_Time}, pAddress1 = #{pAddress1}, pAddress2 = #{pAddress2}, pBoxInfo = #{pBoxInfo}, pCautionInfo = #{pCautionInfo}, pBoxInfo = #{pBoxInfo}
+        where pNo = #{pNo}
+    </update>
+
+    <delete id="deleteboxtype" parameterType="int">
+        DELETE FROM boxtype WHERE pNo = #{pNo}
+    </delete>
+
+    <delete id="deletereserveDate" parameterType="int">
+        delete from reserveDate where pNo = #{pNo}
+    </delete>
+    
+    <delete id="deleteplace" parameterType="int">
+        DELETE p, b FROM place p
+        LEFT JOIN boxtype b ON p.pNo = b.pNo
+        WHERE p.pNo = #{pNo}
+    </delete>
+
+
+</mapper>
+
+

@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+body{
+	margin : 0;
+	padding : 0;
+}
+#header_space{
+	width : 100%;
+	height : 81px;
+}
+/************************* 헤더 전체 *************************/
+#header_wrap{
+	position : fixed;
+	width : 100%;
+	z-index : 2000;
+}
+#headerBox{
+	height : 80px;
+	display : flex;
+	justify-content : space-between;
+	align-items : center;
+	padding-left : 80px;
+	padding-right : 100px;
+	border-bottom : solid 1px #00DBAF;
+	background-color : white;
+}
+#outside_sidebar{
+	position : fixed;
+	display : flex;
+	width : 100vw;
+	height : 100vh;
+	z-index : -1;
+}
+/*------ 로고 ------*/
+#header_logoImg{
+	vertical-align:middle;
+	height:50px;
+}
+#header_logoSimpleImg{
+	display : none;
+	vertical-align:middle;
+	height:37.5px;
+}
+
+/*------ 검색 ------*/
+#header_form{
+	display : flex;
+	align-items : center;
+	justify-content : space-between;
+}
+#header_searchInput{
+	line-height : 36px;
+	vertical-align:top;
+	border-radius : 30px;
+	border : solid 1px #00DBAF;
+	padding : 5px 15px 5px 15px;
+	font-size : 15px;
+	width : 500px;
+}
+#header_searchInput:focus{
+	outline : none;
+}
+
+#header_searchBtn{
+	border : none;
+	background-color : white;
+	font-size : 15px;
+	color : #00DBAF;
+}
+#messageBox__header{
+	font-size : 25px;
+	margin-right : 30px;
+}
+#messageBox__header i{
+	margin-left : 10px;
+}
+#messageBox__header i:hover{
+	cursor : pointer;
+}
+
+#header_searchBtn:hover{
+	cursor:pointer;
+}
+
+/*------ 목록버튼 ------*/
+#user_button{
+	display : flex;
+	height : 40px;
+	align-items : center;
+	border-radius : 30px;
+	border : solid 1px #00DBAF;
+	background-color : white;
+}
+#user_button:hover{
+	cursor:pointer;
+}
+#user_button i:first-child {
+	padding-right : 7px;
+	padding-left : 7px;
+	font-size : 15px;
+}
+
+/************************* 사이드바 *************************/
+#header_sidebar{
+	position : fixed;
+	right : -410px;
+	width : 400px;
+	height : 100%;
+	border-left : solid 1px #00DBAF;
+	background-color : white;
+	z-index : 3000;
+}
+#sidebar_close{
+	position : absolute;
+	top : 20px;
+	left : 20px;
+}
+#sidebar_top{
+	height : 130px;
+}
+#sidebar_listBox{
+	height : 100%;
+}
+
+#sidebar_closeBtn{
+	border : none;
+	background-color : white;
+}
+#sidebar_closeBtn:hover{
+	border : none;
+	cursor : pointer;
+}
+#sidebar_listBox ul{
+	margin : 0;
+	padding : 0;
+	list-style-type : none;
+}
+#sidebar_listBox ul li{
+	text-align : left;
+	padding : 15px 15px;
+}
+#sidebar_listBox ul li:hover{
+	background : #EBEBEB;
+	cursor : pointer;
+}
+#sidebar_listBox a{
+	text-decoration-line : none;
+	color : black;
+	width : 100%;
+	font-size : 20px;
+	display: block;
+}
+/************************* 반응형 설정 *************************/
+@media (max-width: 1023px){
+	
+	#header_searchInput{
+		width : 300px;
+	}
+	#headerBox{
+		padding-left : 48px;
+		padding-right : 60px;
+	}
+}
+
+/* @media (max-width: 700px){
+	
+	#header_searchInput{
+		width : 250px;
+	}
+} */
+	/* ------ 목록버튼 ------ */
+@media (max-width: 700px){
+	
+	#headerBox{
+		padding-left : 24px;
+		padding-right : 30px;
+	}
+	
+	#header_logoImg{
+		display : none;
+		height : 37.5px;
+	}
+	#header_logoSimpleImg{
+		display : block;
+		margin-right : 5px;
+	}
+	#header_searchInputBox{
+		flex-grow : 1;
+	}
+	#header_searchInput{
+		line-height : 25px;
+		width : 100%;
+	}
+	#header_searchBtnBox{
+		margin-left : 19px;
+	}
+	#header_searchBtn{
+		position : relative;
+		left : 16px;
+		font-size : 10px;
+	}
+	#STTBtn{
+		position : relative;
+		left : 16px;
+		font-size : 10px;
+	}
+	#user_button{
+		margin-left : 16px;
+		height : 30px;
+		background-color : white;
+	}
+	#user_button i:first-child {
+		padding-right : 4px;
+		padding-left : 4px;
+		font-size : 10px;
+	}
+	#header_sidebar{
+		width : 250px;
+	}
+}

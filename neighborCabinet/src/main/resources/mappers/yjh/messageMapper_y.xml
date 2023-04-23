@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neighborCabinet.project.dao.IMessageDAO_y">
+	<select id="resInfo" parameterType="string" resultType="com.neighborCabinet.project.model.ReserveVO_y">
+		SELECT *
+		FROM reserve r, place p
+		WHERE receiver=#{userId} and resState=0 and r.pNo=p.pNo
+	</select>
+	<select id="resCheck" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		FROM reserve
+		WHERE receiver=#{userId} and reserveNo=#{reserveNo}
+	</select>
+	<select id="requestInfo" parameterType="hashmap" resultType="com.neighborCabinet.project.model.ReserveVO_y">
+		SELECT *
+		FROM reserve r, place p
+		WHERE r.reserveNo=#{reserveNo} and r.receiver=#{userId} and r.pNo=p.pNo
+	</select>
+	<update id="requestO" parameterType="int">
+		UPDATE reserve
+		SET resState=1
+		WHERE reserveNo=#{reserveNo}
+	</update>
+	<insert id="requestOMessage" parameterType="hashmap">
+		INSERT INTO messageAll (message, reserveNo, userId, OX, look)
+		VALUES ("예약 확정", #{reserveNo}, #{messageId}, 1, 0)
+	</insert>
+	<update id="requestX" parameterType="int">
+		UPDATE reserve
+		SET resState=5
+		WHERE reserveNo=#{reserveNo}
+	</update>
+	<insert id="requestXMessage" parameterType="hashmap">
+		INSERT INTO messageAll (message, reserveNo, userId, OX, look)
+		VALUES ("예약 신청 거절", #{reserveNo}, #{messageId}, 0, 0)
+	</insert>
+	<select id="messageAll" parameterType="string" resultType="com.neighborCabinet.project.model.messageAllVO_y">
+		SELECT *
+		FROM messageAll m, reserve r, place p
+		WHERE m.userId=#{userId} and m.reserveNo=r.reserveNo and r.pNo=p.pNo
+		ORDER BY mesDate DESC
+	</select>
+	<delete id="mesDelete" parameterType="int">
+		DELETE FROM messageAll WHERE mesNo = #{mesNo}
+	</delete>
+	<delete id="mesDeleteAll" parameterType="string">
+		DELETE FROM messageAll WHERE userId = #{userId}
+	</delete>
+	<update id="meschange" parameterType="int">
+		UPDATE messageAll
+		SET look=1
+		WHERE mesNo=#{mesNo}
+	</update>
+	<select id="mesRequestCheck" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		FROM reserve
+		WHERE receiver=#{userId} and resState=0
+	</select>
+	<select id="mesAllCheck" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		FROM messageAll
+		WHERE userId=#{userId} and look=0
+	</select>
+</mapper >

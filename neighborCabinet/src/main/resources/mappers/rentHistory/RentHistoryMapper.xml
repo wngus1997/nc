@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <xmlns:p="http://www.springframework.org/schema/p">
+ <beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		p:order="2"
+		p:viewClass="org.springframework.web.servlet.view.JstlView"
+	    p:prefix="/WEB-INF/views/"  
+	    p:suffix=".jsp"
+	 ></beans:bean>
+	 <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1"></beans:bean>     
+       
+	<beans:bean id="qrcodeview" class="com.neighborCabinet.project.controller"></beans:bean>
+	</xmlns:p> -->
+	
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+   <mapper namespace="com.neighborCabinet.project.dao.IRentHistoryDAO">
+  	<!-- 검색 가능한 내역 나누기-->
+  	<!--  -->
+  	
+	<sql id="historyWhere" >
+		<!-- WHERE 1=1 -->
+		WHERE r.sender=#{userId} AND r.pNo=p.pNo
+		<if test="searchKeyword != null and searchKeyword != ''">
+			<![CDATA[
+			AND
+			(p.pAddress1 LIKE concat('%',#{searchKeyword},'%')
+			OR
+		    r.receiver LIKE concat('%',#{searchKeyword},'%'))  
+			]]> 
+		</if>
+	</sql>
+	<!-- 대여 내역 조회 -->
+	<select id="listAllHistory" parameterType="com.neighborCabinet.project.model.RentHistoryVO" resultType="com.neighborCabinet.project.model.RentHistoryVO">
+		<![CDATA[
+		SELECT r.reserveNo, r.reserveDate, r.userId, r.pNo, p.pAddress1, 
+				r.senderPhone, r.pickup, r.resState, r.receiver, 
+				r.startTime, r.endTime,
+				r.sender, r.senderName
+		FROM reserve r, place p
+		]]> 
+		<include refid="historyWhere"/>
+		<![CDATA[
+		ORDER BY r.reserveNo DESC
+		LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
+		]]> 
+	</select>
+	
+	<select id="getListCnt" parameterType="com.neighborCabinet.project.model.RentHistoryVO" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM reserve r, place p
+		<include refid="historyWhere"/>
+	</select>
+	
+	
+	
+</mapper>
+

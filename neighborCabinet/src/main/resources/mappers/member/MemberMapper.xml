@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neighborCabinet.project.dao.IMemberDAO">
+
+    <select id="loginCheck" parameterType="string" resultType="string">
+        SELECT userPw FROM member WHERE userId=#{id}
+    </select>
+    <!-- 화원등록 -->
+    <insert id="insertMember" parameterType="com.neighborCabinet.project.model.MemberVO">
+        INSERT INTO member (userId, userPw, userName, userEmail, userHp, userZipcode, userAddress1, userAddress2, userNickname)
+        VALUES (#{userId}, #{userPw}, #{userName}, #{userEmail}, #{userHp}, #{userZipcode}, #{userAddress1}, #{userAddress2}, #{userNickname})
+    </insert>
+    <insert id="insertBoxM" parameterType="string">
+        INSERT INTO boxmodify (userId, a01, a02, a03, a04, b01, b02, b03, b04)
+        VALUES (#{userId}, '0', '0', '0', '0', '0', '0', '0', '0')
+    </insert>
+    <!--중복 검사-->
+    <select id="userIdCheck" parameterType="String"  resultType="string">
+        SELECT userId FROM member where userId = #{userId}
+    </select>
+
+    <select id="getNickName" resultType="String" parameterType="String">
+        select userNickname from member where userId = #{userId}
+    </select>
+
+    <select id="findid" resultType="String" parameterType="com.neighborCabinet.project.model.MemberVO">
+        select userId from member where userName = #{name} and userEmail = #{email}
+    </select>
+
+</mapper>

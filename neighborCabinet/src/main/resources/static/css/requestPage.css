@@ -1,0 +1,386 @@
+
+@charset "UTF-8";
+body{
+	margin : 0;
+	background : #F6F6F6 !important;
+}
+
+#wrap{
+	text-align : center;
+}
+article{
+	margin : auto;
+	width : 1130px;
+	box-sizing : border-box;
+}
+article> form{
+	display : flex;
+}
+#left_article{
+	width : 750px;
+	box-sizing : border-box;
+	text-align : left;
+}
+#right_article{
+	margin-left : 30px;
+	width : 350px;
+	box-sizing: border-box;
+	text-align : left;
+}
+.sec_title{
+	padding : 2px 0 15px;
+	font-size : 16px;
+	border-bottom : solid 4px #00DBAF;
+	width : 100%;
+	box-sizing : border-box;
+	height : 38px;
+}
+.sec_title2{
+	padding : 20px 30px;
+	font-size : 16px;
+	box-sizing: border-box;
+	background : #8affe8;
+	/* background : #EBEBEB; */
+}
+/* 공간정보 */
+#s1{
+	margin-top : 50px;
+}
+#fixedInfo_1{
+	padding : 30px;
+	background : white;
+}
+#fixedInfo_1_1{
+	display : flex;
+	min-height : 150px;
+}
+#spaceImg{
+	height : 140px;
+	width : 140px;
+}
+#spaceDis{
+	width : 100%;
+	padding-left : 20px;
+}
+#spaceDis div:first-child{
+	font-size : 30px;
+	padding-bottom : 20px;
+	border-bottom : solid 1px #ebebeb;
+	margin-bottom : 20px;
+}
+#spaceDis p{
+	font-size : 16px;
+}
+#fixedInfo_1_2{
+	padding : 0 20px;
+	font-size : 16px;
+}
+#fixedInfo_1_2>div{
+	display : flex;
+	padding : 15px 0;
+	border-top : solid 1px #ebebeb;
+}
+#fixedInfo_1_2>div>div:first-child{
+	width : 100px;
+}
+#fixedInfo_1_2>div>div:last-child{
+	margin-left : 30px;
+}
+/* 예약정보 */
+#s2{
+	margin-top : 50px;
+}
+#fixedInfo_2{
+	padding : 0 30px;
+	box-sizing : border-box;
+	background : white;
+}
+#fixedInfo_2 div{
+	padding : 20px 0;
+	font-size : 16px;
+	display : flex;
+	box-sizing : content-box;
+	justify-content: space-between;
+}
+#fixedInfo_2bobo{
+	border-bottom : solid 1px #ebebeb;
+}
+
+/* 예약자 정보 */
+#s3{
+	margin-top : 50px;
+	background : #F6F6F6;
+}
+#fixedInfo_3{
+	box-sizing: border-box;
+	margin-top : 30px;
+	width : 100%;
+	font-size : 16px;
+}
+#fixedInfo_3>div{
+	display : flex;
+}
+#fixedInfo_3>div:nth-child(n+2){
+	margin-top : 15px;
+}
+#fixedInfo_3>div>div:first-child{
+	width : 100px;
+	padding-top : 15px;
+}
+#storList + label{
+	font-size : 30px;
+	height : 50px;
+	margin : auto;
+	padding : 5px 10px;
+	text-align : center;
+	color : #00DBAF;
+	background : white;
+	border-bottom : solid 1px #ebebeb;
+	border-top : solid 1px #ebebeb;
+	border-right : solid 1px #ebebeb;
+	box-sizing: border-box;
+}
+#storList + label:hover{
+	cursor : pointer;
+}
+.senderInfo{
+	padding : 0 15px;
+	box-sizing: border-box;
+	border : solid 1px #ebebeb;
+	width : 100%;
+	font-size : 18px;
+	height : 50px;
+}
+#fixedInfo_3>div>input:focus{
+	outline: none;
+}
+#fixedInfo_3 input[type="checkbox"] + label{
+	width : 15px;
+	height : 15px;
+	border : 2px solid #bcbcbc;
+	cursor : pointer;
+	margin-top : auto;
+}
+#fixedInfo_3 input[type="checkbox"]:checked + label{
+	background : #00DBAF;
+}
+#fixedInfo_3 input[type="checkbox"]{
+	display : none;
+}
+#senderPhone{
+	width : 100%;
+	box-sizing: border-box;
+	font-size : 18px;
+	height : 50px;
+	display : flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.senderPhone{
+	width : 100%;
+	padding : 0 15px;
+	box-sizing: border-box;
+	border : solid 1px #ebebeb;
+	font-size : 18px;
+	height : 100%;
+	outline: none;
+}
+#fixedInfo_3>div>textarea{
+	padding : 15px 16px;
+	box-sizing: border-box;
+	border : solid 1px #ebebeb;
+	width : 100%;
+	resize: none;
+	font-size : 18px;
+	height : 134px;
+}
+/* 호스트 정보 */
+#s4{
+	margin-top : 50px;
+}
+
+#fixedInfo_4{
+	box-sizing: border-box;
+	padding : 16px 30px;
+	width : 100%;
+	font-size : 16px;
+	background : white;
+	border : solid 1px #ebebeb;
+}
+#fixedInfo_4>div{
+	display : flex;
+	box-sizing: border-box;
+	height : 45px;
+	padding-top : 12px;
+}
+#fixedInfo_4>div:nth-child(n+2){
+	border-top : solid 1px #ebebeb;
+}
+#fixedInfo_4>div>div:first-child{
+	width : 125px;
+}
+#fixedInfo_4>div>div:nth-child(n+2){
+	width : 100%;
+}
+#PAndE{
+	display : flex;
+}
+#PAndE>div{
+	margin-right : 30px;
+}
+/* 결제 예정금액 */
+#s5{
+	margin-top : 50px;
+	position : sticky;
+	top: 123.33px;
+}
+#fixedInfo_5{
+	background : white;
+	padding : 0 20px;
+}
+#fixedInfo_5_1{
+	display : flex;
+	justify-content: space-between;
+	align-items : center;
+}
+#fixedInfo_5_1_1>div{
+	padding : 15px 0px 17px;
+}
+#fixedInfo_5_1_1>div:nth-child(n+2){
+	border-top : solid 1px #ebebeb;
+}
+#fixedInfo_5_1_1>div span{
+	margin-left : 20px;
+}
+#fixedInfo_5_2{
+	padding : 19px 0px 23px;
+	text-align : right;
+	border-top : solid 4px #00DBAF;
+	font-size : 25px;
+}
+#paymentBtn{
+	width : 100%;
+	line-height : 50px;
+	background : #00DBAF;
+	text-align : center;
+	color : white;
+	border : none;
+	font-size : 20px;
+}
+#paymentBtn:hover{
+	cursor : pointer;
+}
+
+/* 모달창 */
+
+#objectModal:checked + div{
+	display : block;
+}
+
+#modal{
+	display : none;
+	position : fixed;
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	z-index : 100;
+	text-align : center;
+}
+#modal>label{
+	position : absolute;
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	background : rgba(0,0,0,0.5);
+	z-index : 1;
+}
+#objectForm{
+	margin : 40px 0 10px;
+}
+#modal>div{
+	border-radius : 15px;
+	position : absolute;
+	top : 50%;
+	left : 50%;
+	transform : translate(-50%, -50%);
+	width : 1000px;
+	min-height : 200px;
+	background : white;
+	z-index : 2;
+}
+#modal>div>label{
+	position : absolute;
+	top : 0%;
+	right : 0%;
+/* 	transform : translate(40%, -40%); */
+	padding : 0 10px;
+	border-radius : 100%;
+	z-index : 1;
+	font-size : 25px;
+}
+#selectedObjectBox{
+	display : flex;
+	align-items: center;
+	justify-content: center;
+}
+#selectedObject{
+	margin-left : 5px;
+	display : flex;
+	background : white;
+	border : solid 1px #ebebeb;
+	width : 700px;
+	min-height : 30px;
+	padding : 0 0 5px 5px;
+	border-radius : 10px;
+	flex-wrap: wrap;
+}
+#selectedObject>div{
+	margin-right : 5px;
+	border-radius : 5px;
+	padding : 4px;
+	color : #1a1a1a;
+	margin-top : 5px;
+}
+#selectedObject i{
+	color : #ebebeb;
+}
+#selectedObject i:hover{
+	cursor : pointer;
+}
+#resultDiv{
+	border-radius : 15px;
+	margin : 20px auto 0;
+	display : flex;
+	flex-wrap: wrap;
+	width : 800px;
+	background : #ebebeb;
+	padding : 10px;
+	min-height : 80px;
+}
+#resultDiv label{
+	border-radius : 10px;
+	margin : 5px;
+	width : 100px;
+	height : 50px;
+	background : white;
+	box-shadow : 0px 6px 16px rgb(0 0 0 / 5%);
+	display : flex;
+	justify-content : center;
+	align-items : center;
+}
+.objectCheck{
+	display : none;
+}
+#resultDiv input:checked + label{
+	background-color : #a7a7a7 !important;
+}
+#complete{
+	margin-bottom : 20px;
+	border : none;
+	background : #00DBAF;
+	font-size : 20px;
+	color : white;
+	border-radius : 5px;
+}

@@ -1,0 +1,195 @@
+@charset "UTF-8";
+/* 전체 레이아웃 및 설정 */
+#wrap{
+	text-align : center;
+}
+.spaceDiv{
+	height : 100px;
+}
+#wrap table:first-child{
+	margin : auto;
+	width : 1080px;
+}
+#wrap table:nth-child(n+2){
+	margin : auto;
+	text-align : left;
+	width : 1080px;
+}
+.left_align{
+	margin : 10px auto;
+	text-align : left;
+	width : 1080px;
+	font-size : 25px;
+	font-weight : bolder;
+}
+table {
+	border-collapse: collapse;
+}
+
+/* 첫번째 테이블 */
+#ordered_boxTitle td{
+	text-align : center;
+}
+#ordered_boxTitle tr td:first-child{
+	border-top : solid 1px rgba(0, 219, 175, .3);
+	border-bottom : solid 1px rgba(0, 219, 175, .3);
+	width : 50%;
+}
+#ordered_boxTitle tr td:nth-child(2){
+	border : solid 1px rgba(0, 219, 175, .3);
+	width : 25%;
+}
+#ordered_boxTitle tr td:nth-child(3){
+	border-top : solid 1px rgba(0, 219, 175, .3);
+	border-bottom : solid 1px rgba(0, 219, 175, .3);
+	width : 25%;
+}
+
+#ordered_boxTitle tr:nth-child(n+2) td:first-child>div{
+	display : flex;
+	align-items : center;
+	justify-content : space-evenly;
+}
+.top_row{
+	background-color : #d7fff1;
+	height : 50px;
+	font-size : 20px;
+}
+.bottom_row{
+	height : 100px;
+}
+
+.img_border{
+	margin : 0;
+	border-radius : 80px;
+	width : 80px;
+	height : 80px;
+	display : flex;
+	align-items : center;
+}
+.boxA_TypeImg{
+	width : 80px;
+	height : auto;
+}
+
+/* 아래 두 테이블 */
+.left_col{
+	text-align : left;
+	background-color : #d7fff1;
+	width : 120px;
+	height : 50px;
+	padding-left : 5px;
+	font-size : 20px;
+	border-top : solid 1px rgba(0, 219, 175, .3);
+	border-bottom : solid 1px rgba(0, 219, 175, .3);
+}
+.right_col{
+	border-top : solid 1px rgba(0, 219, 175, .3);
+	border-bottom : solid 1px rgba(0, 219, 175, .3);
+	border-left : solid 1px rgba(0, 219, 175, .3);
+	padding-left : 5px;
+	font-size : 18px;
+}
+.shipping_info{
+	padding-left : 5px;
+	font-size : 18px;
+	border : none;
+	bacground-color : none;
+	width : 100%;
+}
+.shipping_info:focus{
+	outline: none;
+}
+
+/* 배송지 정보 */
+#SI_change{
+	background-color : #00DBAF;
+	border : solid 1px rgba(0, 219, 175, .3);
+	color : white;
+	font-size : 20px;
+	border-radius : 10px;
+}
+#SI_change:hover{
+	background-color :white;
+	border : solid 1px rgba(0, 219, 175, .3);
+	color : #00DBAF;
+	cursor : pointer;
+}
+#shipping_option{
+	margin : 5px 0;
+	width : 300px;
+	height : 35px;
+	font-size : 20px;
+}
+#shipping_optionInput{
+	margin : 5px 0;
+	width : 300px;
+	box-sizing : border-box;
+	height : 35px;
+	font-size : 20px;
+	display : none;
+}
+/* 결제 버튼 */ 
+#paymentBtn{
+	margin-top : 20px;
+	text-align : center;
+	width : 250px;
+	height : 50px;
+	background-color : #00DBAF;
+	border : solid 1px rgba(0, 219, 175, .3);
+	color : white;
+	font-size : 30px;
+	border-radius : 10px;
+}
+#paymentBtn:hover{
+	background-color : white;
+	border : solid 1px rgba(0, 219, 175, .3);
+	color : #00DBAF;
+	cursor : pointer;
+}
+#hiddenGo{
+}
+@media (max-width: 1080px){
+	wrap table:first-child{
+		width : 1080px;
+	}
+	#wrap table:nth-child(n+2){
+		width : 1080px;
+	}
+	.left_align{
+		width : 1080px;
+	}
+}
+@media (max-width: 800px){
+	wrap table:first-child{
+		width : 600px;
+	}
+	#wrap table:nth-child(n+2){
+		width : 600px;
+	}
+	.left_align{
+		width : 600px;
+	}
+}
+/*@media (max-width: 900px){*/
+/*	wrap table:first-child{*/
+/*		width : 600px;*/
+/*	}*/
+/*	#wrap table:nth-child(n+2){*/
+/*		width : 600px;*/
+/*	}*/
+/*	.left_align{*/
+/*		width :600px;*/
+/*	}*/
+/*}*/
+@media (max-width: 600px){
+	wrap table:first-child{
+		width : 400px;
+	}
+	#wrap table:nth-child(n+2){
+		width : 400px;
+	}
+	.left_align{
+		width : 400px;
+	}
+}
